@@ -1,4 +1,4 @@
-package open.thl.other;
+package open.thl.google;
 
 /**
  * Google Cuava在国内项目中很少使用，但我合作过的一些国外JAVA工程师几乎都会推荐这个JAVA库。

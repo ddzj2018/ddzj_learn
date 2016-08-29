@@ -1,4 +1,4 @@
-package open.thl.json;
+package open.thl.google;
 
 public class GosnExample {
 
