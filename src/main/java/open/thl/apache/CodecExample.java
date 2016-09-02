@@ -1,5 +1,6 @@
 package open.thl.apache;
 
+import java.io.UnsupportedEncodingException;
 import java.security.Key;
 
 import javax.crypto.Cipher;
@@ -11,6 +12,8 @@ import javax.crypto.spec.DESKeySpec;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 /**
  * apache 加密解密转码操作示例
  * 
@@ -18,37 +21,7 @@ import org.apache.commons.codec.digest.DigestUtils;
  *
  */
 public class CodecExample {
-
-	public static String base64Encode(String data) {
-
-		return Base64.encodeBase64String(data.getBytes());
-	}
-
-	public static byte[] base64Decode(String data) {
-
-		return Base64.decodeBase64(data.getBytes());
-	}
-
-	public static String md5(String data) {
-
-		return DigestUtils.md5Hex(data);
-	}
-
-	public static String sha1(String data) {
-
-		return DigestUtils.sha1Hex(data);
-	}
-
-	public static String sha256Hex(String data) {
-
-		return DigestUtils.sha256Hex(data);
-	}
-	
-
-	
-	
-	
-	
+	private static String UTF8="UTF-8";
 	/** 
      * 密钥算法 
      * java支持56位密钥，bouncycastle支持64位 
@@ -58,6 +31,52 @@ public class CodecExample {
      * 加密/解密算法/工作模式/填充方式 
      * */  
     public static final String CIPHER_ALGORITHM="DES/ECB/PKCS5Padding";  
+	/**
+	 * base64转码
+	 * @param data
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 */
+	public static String base64Encode(String data) throws UnsupportedEncodingException {
+		byte[] encodeByte=Base64.encodeBase64(data.getBytes(UTF8));
+		return new String(encodeByte,UTF8);
+	}
+	/**
+	 * base64解码
+	 * @param data
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 */
+	public static String base64Decode(String data) throws UnsupportedEncodingException {
+		byte[] decodeByte=Base64.decodeBase64(data.getBytes(UTF8));
+		return new String(decodeByte,UTF8);
+	}
+	/**
+	 * md5加密
+	 * @param data
+	 * @return
+	 */
+	public static String md5(String data) {
+		return DigestUtils.md5Hex(data);
+	}
+	/**
+	 * sha1加密
+	 * @param data
+	 * @return
+	 */
+	public static String sha1(String data) {
+		return DigestUtils.sha1Hex(data);
+	}
+	/**
+	 * sha256加密
+	 * @param data
+	 * @return
+	 */
+	public static String sha256Hex(String data) {
+		return DigestUtils.sha256Hex(data);
+	}
+	
+	
       
     /** 
      *  
@@ -72,8 +91,6 @@ public class CodecExample {
         //生成密钥  
         SecretKey secretKey=kg.generateKey();  
         //获取二进制密钥编码形式  
-        System.out.println("key bytes="+secretKey.getEncoded());
-        System.out.println("key md5="+md5(secretKey.getEncoded().toString()));
         return secretKey.getEncoded();  
     }  
     /** 
@@ -97,7 +114,7 @@ public class CodecExample {
      * @param key 密钥 
      * @return byte[] 加密后的数据 
      * */  
-    public static byte[] encrypt(byte[] data,byte[] key) throws Exception{  
+    public static byte[] encryptDes(byte[] data,byte[] key) throws Exception{  
         //还原密钥  
         Key k=toKey(key);  
         //实例化  
@@ -113,7 +130,7 @@ public class CodecExample {
      * @param key 密钥 
      * @return byte[] 解密后的数据 
      * */  
-    public static byte[] decrypt(byte[] data,byte[] key) throws Exception{  
+    public static byte[] decryptDes(byte[] data,byte[] key) throws Exception{  
         //欢迎密钥  
         Key k =toKey(key);  
         //实例化  
@@ -131,24 +148,10 @@ public class CodecExample {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
-		String base64 = base64Encode("ricky");
-		System.out.println("base64 encode=" + base64);
-
-		byte[] buf = base64Decode(base64);
-		System.out.println("base64 decode=" + new String(buf));
-
-		String md5 = md5("ricky");
-		System.out.println("md5=" + md5 + "**len=" + md5.length());
-
-		String sha1 = sha1("test");
-		System.out.println("sha1=" + sha1 + "**len=" + sha1.length());
-
-		String sha256 = sha256Hex("test");
-		System.out.println("sha256=" + sha256 + "**len=" + sha256.length());
-		
-		
 		try {
+			byte[] keyBytes=initkey();
+			System.out.println(keyBytes);
+			System.out.println(new String(keyBytes,UTF8));
 			String content="史蒂夫史蒂夫,xx";  
 	        System.out.println("加密内容："+content);  
 	        //des 密钥至少8位  
@@ -158,7 +161,7 @@ public class CodecExample {
 	        System.out.println("密钥："+key);  
 	        //加密===============================================
 	        //先加密
-	        byte[] data=encrypt(content.getBytes(), key);
+	        byte[] data=encryptDes(content.getBytes(), key);
 	        System.out.println("加密后data："+data);  
 	        //再base64转码
 	        String dataStr=Base64.encodeBase64String(data);
@@ -169,7 +172,7 @@ public class CodecExample {
 	        byte[] resultData=Base64.decodeBase64(dataStr);
 	        System.out.println("解码之后resultData："+resultData);  
 	        //再解密
-	        byte[] xc=decrypt(resultData, key);
+	        byte[] xc=encryptDes(resultData, key);
 	        System.out.println("解密后xc："+xc);  
 	        System.out.println("解密后："+new String(xc));  
 		} catch (Exception e) {
