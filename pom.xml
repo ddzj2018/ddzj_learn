@@ -148,7 +148,11 @@
 			<version>3.3.4</version>
 		</dependency>
 		<!-- ==java tools jar end========================================================== -->
-
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>learn_tooljar_use</finalName>
