@@ -1,8 +1,13 @@
 package open.thl.google;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
+import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
+import com.google.common.io.Files;
 
 /**
  * Google Cuava在国内项目中很少使用，但我合作过的一些国外JAVA工程师几乎都会推荐这个JAVA库。
@@ -18,7 +23,15 @@ public class GuavaExample {
 //		Optional<Integer> possible = Optional.of(5);
 //		System.out.println(possible);
 //		testNull();
-		testMethodReturn();
+//		testMethodReturn();
+		File file = new File("D:/test.txt");  
+		List<String> lines = null;  
+		try {  
+			lines = Files.readLines(file, Charsets.UTF_8);  
+			System.out.println(lines);
+		} catch (IOException e) {  
+			e.printStackTrace();  
+		}  
 	}
 	public static void testNull(){
 		Optional<Integer> possible=Optional.of(6);

@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>open.thl</groupId>
-	<artifactId>learn_tooljar_use</artifactId>
+	<artifactId>learn_tool_package</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>learn_tooljar_use Maven Webapp</name>
+	<name>learn_tool_package Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<!-- ==java tools jar start========================================================== -->
@@ -170,6 +170,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<finalName>learn_tooljar_use</finalName>
+		<finalName>learn_tool_package</finalName>
 	</build>
 </project>

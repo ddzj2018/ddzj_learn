@@ -2,6 +2,7 @@ package open.thl.other;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
@@ -11,6 +12,9 @@ import org.apache.poi.xwpf.usermodel.Borders;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
+
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.Lists;
 
 
 /**
@@ -29,7 +33,7 @@ import org.apache.poi.xwpf.usermodel.XWPFRun;
  */
 public class PoiExample {
 	public static void main(String[] args) {
-		wordExp();
+		excelEx();
 	}
 	public static void wordExp(){
 		try {
@@ -56,26 +60,27 @@ public class PoiExample {
 	public static void excelEx(){
 		try {
 			Workbook wb = new HSSFWorkbook();
+			ImmutableList<String> headerlist=ImmutableList.of("序号","反馈内容","时间","用户");
+			
 			// 创建第一个sheet（页）
 			Sheet sheet = wb.createSheet("反馈列表");
 			//定义每列宽度
-			sheet.setColumnWidth(0, 8 * 256);
-			sheet.setColumnWidth(1, 40 * 256);
-			sheet.setColumnWidth(2, 20 * 256);
-			sheet.setColumnWidth(3, 20 * 256);
+//			sheet.setColumnWidth(0, 8 * 256);
+//			sheet.setColumnWidth(1, 40 * 256);
+//			sheet.setColumnWidth(2, 20 * 256);
+//			sheet.setColumnWidth(3, 20 * 256);
 			//首行title
 			Row row = sheet.createRow((short) 0);
-			row.createCell(0).setCellValue("序号");
-			row.createCell(1).setCellValue("反馈内容");
-			row.createCell(2).setCellValue("时间");
-			row.createCell(3).setCellValue("用户");
+			for (int i=0;i<headerlist.size();i++) {
+				row.createCell(i).setCellValue(headerlist.get(i));
+			}
 			//第二行
 			Row rowbody = sheet.createRow((short) 1);
 			rowbody.createCell(0).setCellValue(1);
-			rowbody.createCell(1).setCellValue("xx");
-			rowbody.createCell(2).setCellValue("xxsss");
+			rowbody.createCell(1).setCellValue("contentxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+			rowbody.createCell(2).setCellValue("time");
 			rowbody.createCell(3).setCellValue("pin");
-			FileOutputStream out = new FileOutputStream("D:/xs.xlsx");
+			FileOutputStream out = new FileOutputStream("D:/excelTest.xls");
 			wb.write(out);
 			wb.close();
 			out.close();
