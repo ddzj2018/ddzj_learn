@@ -47,19 +47,19 @@ public class HttpClientExample {
 	 * post «Î«Û
 	 * @param url
 	 * @param jsonParam "{\"qmIds\":[12,12,12]}"
-	 * @param mapForm
+	 * @param formMap
 	 * @return
 	 */
-	public static String httpPostRequest(String url,String jsonParam,Map<String,Object> mapForm) {
+	public static String httpPostRequest(String url,String jsonParam,Map<String,Object> formMap) {
 		CloseableHttpClient httpclient = HttpClients.createDefault();
 		String result = null;
 		try {
 			HttpPost post = new HttpPost(url);
 			if(StringUtils.isNotBlank(jsonParam)){
 				post.setEntity(new StringEntity(jsonParam, charset));
-			}else if(null!=mapForm&&mapForm.size()>0){
+			}else if(null!=formMap&&formMap.size()>0){
 				List<NameValuePair> formparams = new ArrayList<NameValuePair>();
-				for(Map.Entry<String, Object> map:mapForm.entrySet()){
+				for(Map.Entry<String, Object> map:formMap.entrySet()){
 					formparams.add(new BasicNameValuePair(map.getKey(), map.getValue().toString()));
 				}
 				UrlEncodedFormEntity uefEntity = new UrlEncodedFormEntity(formparams, charset);
@@ -82,6 +82,6 @@ public class HttpClientExample {
 
 	public static void main(String[] args) {
 //		httpGetRequest("http://www.baidu.com/");
-		httpPostRequest("http://www.baidu.com/","{\"qmIds\":[12,12,12]}",null);
+		System.out.println(httpPostRequest("http://www.baidu.com/","{\"qmIds\":[539,607,147]}",null));
 	}
 }
