@@ -8,6 +8,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.poi.xwpf.usermodel.Borders;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
@@ -59,7 +60,7 @@ public class PoiExample {
 	
 	public static void excelEx(){
 		try {
-			Workbook wb = new HSSFWorkbook();
+			Workbook wb = new XSSFWorkbook();//只能导出xlsx格式
 			ImmutableList<String> headerlist=ImmutableList.of("序号","反馈内容","时间","用户");
 			
 			// 创建第一个sheet（页）
@@ -80,7 +81,7 @@ public class PoiExample {
 			rowbody.createCell(1).setCellValue("contentxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 			rowbody.createCell(2).setCellValue("time");
 			rowbody.createCell(3).setCellValue("pin");
-			FileOutputStream out = new FileOutputStream("D:/excelTest.xls");
+			FileOutputStream out = new FileOutputStream("D:/excelTest.xlsx");
 			wb.write(out);
 			wb.close();
 			out.close();

@@ -45,6 +45,11 @@
 			<artifactId>commons-codec</artifactId>
 			<version>1.10</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>1.4</version>
+		</dependency>
 		<!-- Google guava -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
@@ -119,12 +124,6 @@
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml-schemas</artifactId>
 			<version>3.15</version>
-		</dependency>
-		<!-- csv -->
-		<dependency>
-			<groupId>net.sf.supercsv</groupId>
-			<artifactId>super-csv</artifactId>
-			<version>2.4.0</version>
 		</dependency>
 		<!-- dom4j -->
 		<dependency>
