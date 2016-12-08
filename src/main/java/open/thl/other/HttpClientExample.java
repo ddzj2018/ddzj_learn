@@ -83,5 +83,6 @@ public class HttpClientExample {
 	public static void main(String[] args) {
 //		httpGetRequest("http://www.baidu.com/");
 		System.out.println(httpPostRequest("http://www.baidu.com/","{\"qmIds\":[539,607,147]}",null));
+		
 	}
 }

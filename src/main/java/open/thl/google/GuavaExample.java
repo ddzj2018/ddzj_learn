@@ -2,11 +2,16 @@ package open.thl.google;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry;
+import org.apache.commons.compress.archivers.zip.ZipFile;
+
 import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
+import com.google.common.collect.Lists;
 import com.google.common.io.Files;
 
 /**
@@ -18,12 +23,8 @@ import com.google.common.io.Files;
  *
  */
 public class GuavaExample {
-	
-	public static void main(String[] args) {
-//		Optional<Integer> possible = Optional.of(5);
-//		System.out.println(possible);
-//		testNull();
-//		testMethodReturn();
+	public static final Charset GBK = Charset.forName("GBK");
+	public static void readFile(){
 		File file = new File("D:/test.txt");  
 		List<String> lines = null;  
 		try {  
@@ -32,6 +33,31 @@ public class GuavaExample {
 		} catch (IOException e) {  
 			e.printStackTrace();  
 		}  
+	}
+	public static void writeFile(){
+		
+		File file=new File("D:/pins.txt");
+		List<String> lsList=Lists.newArrayList("1jd_ddssxcc","2ÖÐºÃºÃ","3cccfsdvddssdd");
+		try {
+			for(String pin:lsList){
+				Files.append(pin, file, GBK);
+				Files.append("\r\n", file, GBK);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		File zipFile=new File("D:/pins.zip");
+		
+	}
+	
+	public static void main(String[] args) {
+		writeFile();
+//		Optional<Integer> possible = Optional.of(5);
+//		System.out.println(possible);
+//		testNull();
+//		testMethodReturn();
+		
 	}
 	public static void testNull(){
 		Optional<Integer> possible=Optional.of(6);

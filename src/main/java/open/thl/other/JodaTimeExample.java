@@ -29,8 +29,10 @@ public class JodaTimeExample {
         DateTime dateTime2 = DateTime.parse("2012-12-21 23:22:45", format);   
         
      // DateTime与java.util.Date对象,当前系统TimeMillis转换    
-        DateTime dt6 = new DateTime(new Date());    
-        Date date = dt6.toDate();    
+        DateTime dt6 = new DateTime(new Date());  
+        System.out.println("dt6"+dt6);
+        Date date = dt6.toDate();   
+       
         DateTime dt7 = new DateTime(System.currentTimeMillis());    
         dt7.getMillis();   
           

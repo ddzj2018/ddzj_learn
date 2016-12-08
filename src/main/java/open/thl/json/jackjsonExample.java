@@ -1,5 +1,13 @@
 package open.thl.json;
 
-public class jackjsonExample {
+import open.thl.domain.User;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+public class jackjsonExample {
+	public static void main(String[] args) {
+		ObjectMapper mapper=new ObjectMapper();
+		User fromValue = null;
+		mapper.convertValue(fromValue, User.class);
+	}
 }
