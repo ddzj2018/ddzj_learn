@@ -1,5 +1,6 @@
 package open.thl.apache;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -70,53 +71,68 @@ public class Compress {
 	 * @param zipFilePath
 	 * @param saveFileDir
 	 */
-	public static void decompressZip(String zipFilePath, String saveFileDir) {
-		if (isEndsWithZip(zipFilePath)) {
-			File file = new File(zipFilePath);
-			if (file.exists()) {
-				InputStream is = null;
-				ZipArchiveInputStream zais = null;
-				try {
-					is = new FileInputStream(file);
-					zais = new ZipArchiveInputStream(is);
-					ArchiveEntry archiveEntry = null;
-					while ((archiveEntry = zais.getNextEntry()) != null) {
-						String entryFileName = archiveEntry.getName();
-						String entryFilePath = saveFileDir + entryFileName;
-						byte[] content = new byte[(int) archiveEntry.getSize()];
-						zais.read(content);
-						OutputStream os = null;
-						try {
-							File entryFile = new File(entryFilePath);
-							os = new FileOutputStream(entryFile);
-							os.write(content);
-						} catch (IOException e) {
-							throw new IOException(e);
-						} finally {
-							if (os != null) {
-								os.flush();
-								os.close();
-							}
-						}
-					}
-				} catch (Exception e) {
-					throw new RuntimeException(e);
-				} finally {
-					try {
-						if (zais != null) {
-							zais.close();
-						}
-						if (is != null) {
-							is.close();
-						}
-					} catch (IOException e) {
-						throw new RuntimeException(e);
-					}
-				}
-			}
-		}
-	}
-
+	public static void decompressZip(String zipFilePath, String saveFileDir) {  
+        if(!saveFileDir.endsWith("\\") && !saveFileDir.endsWith("/") ){  
+            saveFileDir += File.separator;  
+        }  
+        File dir = new File(saveFileDir);  
+        if(!dir.exists()){  
+            dir.mkdirs();  
+        }  
+        File file = new File(zipFilePath);  
+        if (file.exists()) {  
+            InputStream is = null;   
+            ZipArchiveInputStream zais = null;  
+            try {  
+                is = new FileInputStream(file);  
+                zais = new ZipArchiveInputStream(is);  
+                ArchiveEntry archiveEntry = null;  
+                while ((archiveEntry = zais.getNextEntry()) != null) {   
+                    // 获取文件名  
+                    String entryFileName = archiveEntry.getName();  
+                    // 构造解压出来的文件存放路径  
+                    String entryFilePath = saveFileDir + entryFileName;  
+                    OutputStream os = null;  
+                    try {  
+                        // 把解压出来的文件写到指定路径  
+                        File entryFile = new File(entryFilePath);  
+                        if(entryFileName.endsWith("/")){  
+                            entryFile.mkdirs();  
+                        }else{  
+                            os = new BufferedOutputStream(new FileOutputStream(  
+                                    entryFile));                              
+                            byte[] buffer = new byte[1024 ];   
+                            int len = -1;   
+                            while((len = zais.read(buffer)) != -1) {  
+                                os.write(buffer, 0, len);   
+                            }  
+                        }  
+                    } catch (IOException e) {  
+                        throw new IOException(e);  
+                    } finally {  
+                        if (os != null) {  
+                            os.flush();  
+                            os.close();  
+                        }  
+                    }  
+  
+                }   
+            } catch (Exception e) {  
+                throw new RuntimeException(e);  
+            } finally {  
+                try {  
+                    if (zais != null) {  
+                        zais.close();  
+                    }  
+                    if (is != null) {  
+                        is.close();  
+                    }  
+                } catch (IOException e) {  
+                    throw new RuntimeException(e);  
+                }  
+            }  
+        }  
+    }  
 	public static boolean isEndsWithZip(String fileName) {
 		boolean flag = false;
 		if (fileName != null && !"".equals(fileName.trim())) {
@@ -128,10 +144,21 @@ public class Compress {
 	}
 
 	public static void main(String[] args) {
-		File[] files = { new File("D:/zip/pins.txt") };
+		File file =new File("D:/dts.txt");
+		File[] files = { file };
 		try {
-			compressFiles2Zip(files, "D:/zip/pins.zip");
-//			decompressZip("D:/zip/pins.zip","D:/zip/");
+//			System.out.println("1MB="+1*1024*1024);
+//			if(file.length()>1*1024*1024){
+//				System.out.println("file size:"+file.length());
+//				compressFiles2Zip(files, "D:/dts.zip");
+//			}else{
+//				System.out.println("file size less 1MB,no need compress");
+//			}
+//			
+			
+			
+				
+			decompressZip("D:/dts.zip","D:/zip/");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
