@@ -72,9 +72,9 @@ public static String getJdPushResult(String planId) {
 			result=EntityUtils.toString(resposeEntity, Charsets.UTF_8);
 		}else{
 			result="{\"isSuccess\":false}";
-			System.out.println("ÇëÇówmpmsg single½Ó¿ÚÊ§°Ü£¬´íÎó´úÂëÎª: "+responseStatus);
+			System.out.println("è¯·æ±‚wmpmsg singleæ¥å£å¤±è´¥ï¼Œé”™è¯¯ä»£ç ä¸º: "+responseStatus);
 		}
-		EntityUtils.consume(requestEntity); //¹Ø±ÕrequestEntityÁ÷
+		EntityUtils.consume(requestEntity); //å…³é—­requestEntityæµ
 	} catch (Exception e) {
 		System.out.println("==get JdPush Result exception:"+e);
 	}finally{
