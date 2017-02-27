@@ -16,7 +16,7 @@ import org.apache.commons.compress.archivers.zip.ZipArchiveOutputStream;
 
 public class Compress {
 	/**
-	 * Ñ¹ËõÆÕÍ¨ÎÄ¼þ³ÉzipÎÄ¼þ
+	 * åŽ‹ç¼©æ™®é€šæ–‡ä»¶æˆzipæ–‡ä»¶
 	 * @param files
 	 * @param zipFilePath "D:/zip/pins.zip"
 	 */
@@ -67,7 +67,7 @@ public class Compress {
 	}
 
 	/**
-	 * ½âÑ¹zipÎÄ¼þ
+	 * è§£åŽ‹zipæ–‡ä»¶
 	 * @param zipFilePath
 	 * @param saveFileDir
 	 */
@@ -88,13 +88,13 @@ public class Compress {
                 zais = new ZipArchiveInputStream(is);  
                 ArchiveEntry archiveEntry = null;  
                 while ((archiveEntry = zais.getNextEntry()) != null) {   
-                    // »ñÈ¡ÎÄ¼þÃû  
+                    // èŽ·å–æ–‡ä»¶å  
                     String entryFileName = archiveEntry.getName();  
-                    // ¹¹Ôì½âÑ¹³öÀ´µÄÎÄ¼þ´æ·ÅÂ·¾¶  
+                    // æž„é€ è§£åŽ‹å‡ºæ¥çš„æ–‡ä»¶å­˜æ”¾è·¯å¾„  
                     String entryFilePath = saveFileDir + entryFileName;  
                     OutputStream os = null;  
                     try {  
-                        // °Ñ½âÑ¹³öÀ´µÄÎÄ¼þÐ´µ½Ö¸¶¨Â·¾¶  
+                        // æŠŠè§£åŽ‹å‡ºæ¥çš„æ–‡ä»¶å†™åˆ°æŒ‡å®šè·¯å¾„  
                         File entryFile = new File(entryFilePath);  
                         if(entryFileName.endsWith("/")){  
                             entryFile.mkdirs();  
@@ -144,13 +144,13 @@ public class Compress {
 	}
 
 	public static void main(String[] args) {
-		File file =new File("D:/dts.txt");
+		File file =new File("D:/dts_ccc.txt");
 		File[] files = { file };
 		try {
 //			System.out.println("1MB="+1*1024*1024);
 //			if(file.length()>1*1024*1024){
 //				System.out.println("file size:"+file.length());
-//				compressFiles2Zip(files, "D:/dts.zip");
+//				compressFiles2Zip(files, "D:/dts_ccc.zip");
 //			}else{
 //				System.out.println("file size less 1MB,no need compress");
 //			}
@@ -158,7 +158,7 @@ public class Compress {
 			
 			
 				
-			decompressZip("D:/dts.zip","D:/zip/");
+			decompressZip("D:/dts_ccc.zip","D:/zip/");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

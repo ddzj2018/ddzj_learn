@@ -1,12 +1,12 @@
 package open.thl.other;
 /**
- * ×Ö·û´®²Ù×÷
+ * å­—ç¬¦ä¸²æ“ä½œ
  * @author zhouchangwei
  *
  */
 public class StringExample {
 	/**
-	 * Çå³ş×Ö·û´®ÖĞµÄ¿Õ¸ñ
+	 * æ¸…æ¥šå­—ç¬¦ä¸²ä¸­çš„ç©ºæ ¼
 	 * @param inputStr
 	 * @return
 	 */

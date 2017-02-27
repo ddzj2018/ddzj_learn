@@ -1,7 +1,12 @@
 package open.thl.google;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
 import java.util.List;
 import java.util.Set;
@@ -15,9 +20,9 @@ import com.google.common.collect.Lists;
 import com.google.common.io.Files;
 
 /**
- * Google CuavaÔÚ¹úÄÚÏîÄ¿ÖĞºÜÉÙÊ¹ÓÃ£¬µ«ÎÒºÏ×÷¹ıµÄÒ»Ğ©¹úÍâJAVA¹¤³ÌÊ¦¼¸ºõ¶¼»áÍÆ¼öÕâ¸öJAVA¿â¡£
- * Ëü°üº¬ÁËGoogleÔÚ×Ô¼ºµÄJAVAÏîÄ¿ÖĞËùÊ¹ÓÃµÄÒ»Ğ©ºËĞÄJAVA¿â¡£°üº¬ÁË¶Ô£º¼¯ºÏ,»º´æ,²¢·¢¿â,×Ö·û´®´¦Àí,
- * I/OµÈ¸÷¸ö·½ÃæµÄÖ§³Ö¡£ÁíÍâGoogle¿ª·¢µÄ¿â×ÜÊÇÒÔĞÔÄÜÖø³Æ¡£
+ * Google Cuavaåœ¨å›½å†…é¡¹ç›®ä¸­å¾ˆå°‘ä½¿ç”¨ï¼Œä½†æˆ‘åˆä½œè¿‡çš„ä¸€äº›å›½å¤–JAVAå·¥ç¨‹å¸ˆå‡ ä¹éƒ½ä¼šæ¨èè¿™ä¸ªJAVAåº“ã€‚
+ * å®ƒåŒ…å«äº†Googleåœ¨è‡ªå·±çš„JAVAé¡¹ç›®ä¸­æ‰€ä½¿ç”¨çš„ä¸€äº›æ ¸å¿ƒJAVAåº“ã€‚åŒ…å«äº†å¯¹ï¼šé›†åˆ,ç¼“å­˜,å¹¶å‘åº“,å­—ç¬¦ä¸²å¤„ç†,
+ * I/Oç­‰å„ä¸ªæ–¹é¢çš„æ”¯æŒã€‚å¦å¤–Googleå¼€å‘çš„åº“æ€»æ˜¯ä»¥æ€§èƒ½è‘—ç§°ã€‚
  * 
  * @author zhouchangwei
  *
@@ -25,7 +30,7 @@ import com.google.common.io.Files;
 public class GuavaExample {
 	public static final Charset GBK = Charset.forName("GBK");
 	public static void readFile(){
-		File file = new File("D:/test.txt");  
+		File file = new File("D:/pinFile.txt");  
 		List<String> lines = null;  
 		try {  
 			lines = Files.readLines(file, Charsets.UTF_8);  
@@ -34,25 +39,51 @@ public class GuavaExample {
 			e.printStackTrace();  
 		}  
 	}
+	
 	public static void writeFile(){
+//		File file=new File("D:/dts_xxx.txt");
+//		System.out.println(file.length());
 		
-		File file=new File("D:/pins.txt");
-		List<String> lsList=Lists.newArrayList("1jd_ddssxcc","2ÖĞºÃºÃ","3cccfsdvddssdd");
 		try {
-			for(String pin:lsList){
-				Files.append(pin, file, GBK);
-				Files.append("\r\n", file, GBK);
+//			OutputStream out =new FileOutputStream(file,true);
+//		    OutputStreamWriter osw = new OutputStreamWriter(out,GBK);  
+			FileWriter fw = new FileWriter("D:/dts_ddddccd.txt", true);
+			BufferedWriter bufferedWriter = new BufferedWriter(fw);
+		    long start =System.currentTimeMillis();
+			for(int i=1;i<2000000;i++){
+				System.out.println(i);
+				try {
+//					out.write(("c75b22e18cd34ee8ac55b699a53e13b7" + "\r\n").getBytes(GBK));
+					bufferedWriter.append("c75b22e18cd34ee8ac55b699a53e13b7"+"\r\n");
+//					bufferedWriter.newLine();
+//					osw.write("c75b22e18cd34ee8ac55b699a53e13b7" + "\r\n");
+//					Files.append("c75b22e18cd34ee8ac55b699a53e13b7"+"\r\n", file, GBK);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
+			bufferedWriter.flush();
+			bufferedWriter.close();
+//			osw.flush();
+//			osw.close();
+//			out.flush();
+//			out.close();
+			long end=System.currentTimeMillis();
+			System.out.println(end-start);
+
 		} catch (Exception e) {
-			// TODO: handle exception
+			// TODO: handle exception13823 13677     13842
 		}
 		
-		File zipFile=new File("D:/pins.zip");
+		
+//		File zipFile=new File("D:/pins.zip");
 		
 	}
 	
 	public static void main(String[] args) {
-		writeFile();
+		File file = new File("D:/pinFile.txt");  
+		System.out.println(file.getAbsolutePath());
+//		writeFile();
 //		Optional<Integer> possible = Optional.of(5);
 //		System.out.println(possible);
 //		testNull();
@@ -81,24 +112,24 @@ public class GuavaExample {
 	public static void testMethodReturn() {
         Optional<Long> value = method();
         if(value.isPresent()==true){
-            System.out.println("»ñµÃ·µ»ØÖµ: " + value.get());     
+            System.out.println("è·å¾—è¿”å›å€¼: " + value.get());     
         }else{
                 
-            System.out.println("»ñµÃ·µ»ØÖµ: " + value.or(-12L));    
+            System.out.println("è·å¾—è¿”å›å€¼: " + value.or(-12L));    
         }
         
-        System.out.println("»ñµÃ·µ»ØÖµ orNull: " + value.orNull());
+        System.out.println("è·å¾—è¿”å›å€¼ orNull: " + value.orNull());
         
         Optional<Long> valueNoNull = methodNoNull();
         if(valueNoNull.isPresent()==true){
             Set<Long> set=valueNoNull.asSet();
-            System.out.println("»ñµÃ·µ»ØÖµ set µÄ size : " + set.size());    
-            System.out.println("»ñµÃ·µ»ØÖµ: " + valueNoNull.get());     
+            System.out.println("è·å¾—è¿”å›å€¼ set çš„ size : " + set.size());    
+            System.out.println("è·å¾—è¿”å›å€¼: " + valueNoNull.get());     
         }else{
-            System.out.println("»ñµÃ·µ»ØÖµ: " + valueNoNull.or(-12L));    
+            System.out.println("è·å¾—è¿”å›å€¼: " + valueNoNull.or(-12L));    
         }
         
-        System.out.println("»ñµÃ·µ»ØÖµ orNull: " + valueNoNull.orNull());
+        System.out.println("è·å¾—è¿”å›å€¼ orNull: " + valueNoNull.orNull());
     }
 
     private static Optional<Long> method() {

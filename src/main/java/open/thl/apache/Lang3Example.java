@@ -18,9 +18,9 @@ import org.apache.commons.lang3.time.DateUtils;
 
  
 /**
- * Apache Commons LangÊÇApache×îÖøÃûµÄJAVA¿â
- * (GitHubÉÏµÄ´úÂë¿â)£¬ËüÊÇ¶Ôjava.langµÄºÜºÃÀ©Õ¹£¬°üº¬ÁË´óÁ¿·Ç³£ÊµÓÃµÄ¹¤¾ßÀà
- * £¬ÆäÖĞÓÃµÄ×î¶àµÄÓĞStringUtils£¬DateUtils£¬NumberUtils
+ * Apache Commons Langæ˜¯Apacheæœ€è‘—åçš„JAVAåº“
+ * (GitHubä¸Šçš„ä»£ç åº“)ï¼Œå®ƒæ˜¯å¯¹java.langçš„å¾ˆå¥½æ‰©å±•ï¼ŒåŒ…å«äº†å¤§é‡éå¸¸å®ç”¨çš„å·¥å…·ç±»
+ * ï¼Œå…¶ä¸­ç”¨çš„æœ€å¤šçš„æœ‰StringUtilsï¼ŒDateUtilsï¼ŒNumberUtils
  * 
  * @author zhouchangwei
  *
@@ -38,72 +38,72 @@ public class Lang3Example {
         String[] test2 = { "33", "ddffd" }; 
         String[] test1 = { "ddffd", "33" }; 
  
-        // 1.ÅĞ¶ÏÁ½¸öÊı¾İÊÇ·ñÏàµÈ, Èç¹ûÄÚÈİÏàÍ¬£¬ Ë³ĞòÏàÍ¬ Ôò·µ»Ø Õæ 
-        System.out.println("ÅĞ¶ÏÁ½¸öÊı×éÊÇ·ñÏàÍ¬: " + ArrayUtils.isEquals(test, test2)); 
-        System.out.println("ÅĞ¶ÏÊı×éÖĞÊÇ·ñ°üº¬Ò»¸ö¶ÔÏó: " + ArrayUtils.contains(test, "33")); 
+        // 1.åˆ¤æ–­ä¸¤ä¸ªæ•°æ®æ˜¯å¦ç›¸ç­‰, å¦‚æœå†…å®¹ç›¸åŒï¼Œ é¡ºåºç›¸åŒ åˆ™è¿”å› çœŸ 
+        System.out.println("åˆ¤æ–­ä¸¤ä¸ªæ•°ç»„æ˜¯å¦ç›¸åŒ: " + ArrayUtils.isEquals(test, test2)); 
+        System.out.println("åˆ¤æ–­æ•°ç»„ä¸­æ˜¯å¦åŒ…å«ä¸€ä¸ªå¯¹è±¡: " + ArrayUtils.contains(test, "33")); 
          
-        // 2.{33,ddffd} ½«Êı×éÄÚÈİÒÔ{,}ĞÎÊ½Êä³ö£® 
-        System.out.println("Êä³öÊı×éÖĞµÄÊı¾İ: "+ArrayUtils.toString(test)); 
+        // 2.{33,ddffd} å°†æ•°ç»„å†…å®¹ä»¥{,}å½¢å¼è¾“å‡ºï¼ 
+        System.out.println("è¾“å‡ºæ•°ç»„ä¸­çš„æ•°æ®: "+ArrayUtils.toString(test)); 
          
-        System.out.println("½²Ò»¸ö¶şÎ¬Êı×é×ª»»³ÉMAP...."); 
+        System.out.println("è®²ä¸€ä¸ªäºŒç»´æ•°ç»„è½¬æ¢æˆMAP...."); 
         Map map = ArrayUtils.toMap(new String[][] { { "RED", "#FF0000" }, { "GREEN", "#00FF00" }, { "BLUE", "#0000FF" } }); 
-        // 3.toMap Ò»¸öÊı×é£¬µ«Ã¿¸öÔªËØ Each element of the array 
+        // 3.toMap ä¸€ä¸ªæ•°ç»„ï¼Œä½†æ¯ä¸ªå…ƒç´  Each element of the array 
         // must be either a {@link java.util.Map.Entry} or an Array, 
-        // ·½Ê½Ò» ÏÂÃæÊÇ±éÀúmapµÄ·½Ê½£¬È¡µÃÆäkeySet.iterator(); 
+        // æ–¹å¼ä¸€ ä¸‹é¢æ˜¯éå†mapçš„æ–¹å¼ï¼Œå–å¾—å…¶keySet.iterator(); 
         Iterator it = map.keySet().iterator(); 
         while (it.hasNext()) { 
             String key = (String) it.next(); 
-            // it.next()Ö»°üº¬key 
+            // it.next()åªåŒ…å«key 
             System.out.println("key:" + key + "value:" + map.get(key)); 
         } 
-        System.out.println("½²Ò»¸ö¶şÎ¬Êı×é×ª»»³ÉMAP ´òÓ¡½áÊø...."); 
-        // ·½Ê½¶ş,È¡µÃÆäentrySet()¼¯ºÏ, 
+        System.out.println("è®²ä¸€ä¸ªäºŒç»´æ•°ç»„è½¬æ¢æˆMAP æ‰“å°ç»“æŸ...."); 
+        // æ–¹å¼äºŒ,å–å¾—å…¶entrySet()é›†åˆ, 
         Iterator it1 = map.entrySet().iterator(); 
         while (it.hasNext()) { 
             Map.Entry entry = (Map.Entry) it1.next(); 
-            // it1.next()ÖĞ°üº¬keyºÍvalue 
+            // it1.next()ä¸­åŒ…å«keyå’Œvalue 
             System.out.println("key :" + entry.getKey() + "value :" + entry.getValue()); 
         } 
  
-        // 4.È¡µÃÀàÃû 
-        System.out.println("È¡µÃÒ»¸öÀàµÄÃû³Æ: "+ ClassUtils.getShortClassName(Test.class)); 
-        // È¡µÃÆä°üÃû 
-        System.out.println("È¡µÃÒ»¸öÀàµÄ°üÃû: "+ ClassUtils.getPackageName(Test.class)); 
+        // 4.å–å¾—ç±»å 
+        System.out.println("å–å¾—ä¸€ä¸ªç±»çš„åç§°: "+ ClassUtils.getShortClassName(Test.class)); 
+        // å–å¾—å…¶åŒ…å 
+        System.out.println("å–å¾—ä¸€ä¸ªç±»çš„åŒ…å: "+ ClassUtils.getPackageName(Test.class)); 
         // 5.NumberUtils 
-        System.out.println("½«Ò»¸ö×Ö·û´®×ª»»³ÉÊı×Ö: "+ NumberUtils.toInt("6")); 
-        System.out.println("½«Ò»¸ö×Ö·û´®×ª»»³ÉÊı×Ö, ÊäÈëÒ»¸öÄ¬ÈÏ²ÎÊı: "+ NumberUtils.toInt("7", 10));// ·µ»Ø7 Èç¹ûµÚÒ»¸ö²ÎÊıÎª null ·µ»Ø10  
+        System.out.println("å°†ä¸€ä¸ªå­—ç¬¦ä¸²è½¬æ¢æˆæ•°å­—: "+ NumberUtils.toInt("6")); 
+        System.out.println("å°†ä¸€ä¸ªå­—ç¬¦ä¸²è½¬æ¢æˆæ•°å­—, è¾“å…¥ä¸€ä¸ªé»˜è®¤å‚æ•°: "+ NumberUtils.toInt("7", 10));// è¿”å›7 å¦‚æœç¬¬ä¸€ä¸ªå‚æ•°ä¸º null è¿”å›10  
          
-        // 6.ÎåÎ»µÄËæ»ú×ÖÄ¸ºÍÊı×Ö 
-        System.out.println("È¡µÃËæ»ú×ÖÄ¸ºÍÊı×Ö: "+RandomStringUtils.randomAlphanumeric(15)); 
+        // 6.äº”ä½çš„éšæœºå­—æ¯å’Œæ•°å­— 
+        System.out.println("å–å¾—éšæœºå­—æ¯å’Œæ•°å­—: "+RandomStringUtils.randomAlphanumeric(15)); 
         // 7.StringEscapeUtils 
         System.out.println(StringEscapeUtils.unescapeHtml3("</html>")); 
-        // Êä³ö½á¹ûÎª&lt;html&gt; 
+        // è¾“å‡ºç»“æœä¸º&lt;html&gt; 
         System.out.println(StringEscapeUtils.escapeJava("String")); 
-        // 8.StringUtils,ÅĞ¶ÏÊÇ·ñÊÇ¿Õ¸ñ×Ö·û 
-        System.out.println("ÅĞ¶ÏÒ»¸ö×Ö·û´®ÊÇ·ñÊÇ ¿Õ¸ñ: "+StringUtils.isBlank("   ")); 
-        // ½«Êı×éÖĞµÄÄÚÈİÒÔ,·Ö¸ô 
-        System.out.println("½«Êı×éÖĞµÄÄÚÈİÒÔ,·Ö¸ô: "+ StringUtils.join(test, ",")); 
-        // ÔÚÓÒ±ß¼ÓÏÂ×Ö·û,Ê¹Ö®×Ü³¤¶ÈÎª6 
-        System.out.println("ÔÚÓÒ±ß¼ÓÏÂ×Ö·û,Ê¹Ö®×Ü³¤¶ÈÎª6: "+ StringUtils.rightPad("abc", 6, 'T')); 
-        // Ê××ÖÄ¸´óĞ´ 
-        System.out.println("Ê××ÖÄ¸´óĞ´: "+ StringUtils.capitalize("abc")); 
-        // Deletes all whitespaces from a String É¾³ıËùÓĞ¿Õ¸ñ 
-        System.out.println("É¾³ıËùÓĞ¿Õ¸ñ : "+ StringUtils.deleteWhitespace("   ab  c  ")); 
-        // ÅĞ¶ÏÊÇ·ñ°üº¬Õâ¸ö×Ö·û 
-        System.out.println("ÅĞ¶ÏÊÇ·ñ°üº¬Õâ¸ö×Ö·û : "+ StringUtils.contains("abc", "ab")); 
-        // ±íÊ¾×ó±ßÁ½¸ö×Ö·û 
-        System.out.println("È¡µÃÒ»¸ö×Ö·û´®×ó±ßµÄÁ½¸ö×Ö·û: "+ StringUtils.left("abc", 2)); 
-        System.out.println("È¡µÃÒ»¸ö×Ö·û´®ÓÒ±ßµÄÈı¸ö×Ö·û : "+ StringUtils.right("abcd", 3)); 
+        // 8.StringUtils,åˆ¤æ–­æ˜¯å¦æ˜¯ç©ºæ ¼å­—ç¬¦ 
+        System.out.println("åˆ¤æ–­ä¸€ä¸ªå­—ç¬¦ä¸²æ˜¯å¦æ˜¯ ç©ºæ ¼: "+StringUtils.isBlank("   ")); 
+        // å°†æ•°ç»„ä¸­çš„å†…å®¹ä»¥,åˆ†éš” 
+        System.out.println("å°†æ•°ç»„ä¸­çš„å†…å®¹ä»¥,åˆ†éš”: "+ StringUtils.join(test, ",")); 
+        // åœ¨å³è¾¹åŠ ä¸‹å­—ç¬¦,ä½¿ä¹‹æ€»é•¿åº¦ä¸º6 
+        System.out.println("åœ¨å³è¾¹åŠ ä¸‹å­—ç¬¦,ä½¿ä¹‹æ€»é•¿åº¦ä¸º6: "+ StringUtils.rightPad("abc", 6, 'T')); 
+        // é¦–å­—æ¯å¤§å†™ 
+        System.out.println("é¦–å­—æ¯å¤§å†™: "+ StringUtils.capitalize("abc")); 
+        // Deletes all whitespaces from a String åˆ é™¤æ‰€æœ‰ç©ºæ ¼ 
+        System.out.println("åˆ é™¤æ‰€æœ‰ç©ºæ ¼ : "+ StringUtils.deleteWhitespace("   ab  c  ")); 
+        // åˆ¤æ–­æ˜¯å¦åŒ…å«è¿™ä¸ªå­—ç¬¦ 
+        System.out.println("åˆ¤æ–­æ˜¯å¦åŒ…å«è¿™ä¸ªå­—ç¬¦ : "+ StringUtils.contains("abc", "ab")); 
+        // è¡¨ç¤ºå·¦è¾¹ä¸¤ä¸ªå­—ç¬¦ 
+        System.out.println("å–å¾—ä¸€ä¸ªå­—ç¬¦ä¸²å·¦è¾¹çš„ä¸¤ä¸ªå­—ç¬¦: "+ StringUtils.left("abc", 2)); 
+        System.out.println("å–å¾—ä¸€ä¸ªå­—ç¬¦ä¸²å³è¾¹çš„ä¸‰ä¸ªå­—ç¬¦ : "+ StringUtils.right("abcd", 3)); 
          
          
-        System.out.println("°ÑÒ»¸ö×Ö·û´®×ª»»ÎªBigDecimal¶ÔÏó: " + NumberUtils.createBigDecimal("0.25")); 
-        System.out.println("ÕÒ³ö×î´óÖµ: " + NumberUtils.max(new int[]{1,2,3})); 
+        System.out.println("æŠŠä¸€ä¸ªå­—ç¬¦ä¸²è½¬æ¢ä¸ºBigDecimalå¯¹è±¡: " + NumberUtils.createBigDecimal("0.25")); 
+        System.out.println("æ‰¾å‡ºæœ€å¤§å€¼: " + NumberUtils.max(new int[]{1,2,3})); 
         System.out.println("JavaHome: " + SystemUtils.getJavaHome()); 
-        System.out.println("ÁÙÊ±Ä¿Â¼Î»ÖÃ: " + SystemUtils.getJavaIoTmpDir()); 
+        System.out.println("ä¸´æ—¶ç›®å½•ä½ç½®: " + SystemUtils.getJavaIoTmpDir()); 
          
          
-        System.out.println("ÈÕÆÚ¸ñÊ½´¦Àí: " + DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss")); 
-        System.out.println("ÈÕÆÚ¼Ó 7Ìì: " + DateFormatUtils.format(DateUtils.addDays(new Date(), 7), "yyyy-MM-dd HH:mm:ss")); 
+        System.out.println("æ—¥æœŸæ ¼å¼å¤„ç†: " + DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss")); 
+        System.out.println("æ—¥æœŸåŠ  7å¤©: " + DateFormatUtils.format(DateUtils.addDays(new Date(), 7), "yyyy-MM-dd HH:mm:ss")); 
          
     } 
 }

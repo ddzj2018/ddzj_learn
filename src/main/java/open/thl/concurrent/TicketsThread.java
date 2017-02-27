@@ -1,9 +1,9 @@
 package open.thl.concurrent;
 
 class MyThread implements Runnable{
-    private int ticketsCont=5; //Ò»¹²ÓĞ5ÕÅ»ğ³µÆ±
+    private int ticketsCont=5; //ä¸€å…±æœ‰5å¼ ç«è½¦ç¥¨
 
-    private String name; //´°¿Ú, Ò²¼´ÊÇÏß³ÌµÄÃû×Ö
+    private String name; //çª—å£, ä¹Ÿå³æ˜¯çº¿ç¨‹çš„åå­—
 
     public MyThread(String name){
         this.name=name;
@@ -12,8 +12,8 @@ class MyThread implements Runnable{
     public void run(){
         
         while(ticketsCont>0){
-            ticketsCont--; //Èç¹û»¹ÓĞÆ±£¬¾ÍÂôµôÒ»ÕÅÆ±
-            System.out.println(name+"ÂôµôÁË1ÕÅÆ±£¬Ê£ÓàÆ±ÊıÎª:"+ticketsCont);
+            ticketsCont--; //å¦‚æœè¿˜æœ‰ç¥¨ï¼Œå°±å–æ‰ä¸€å¼ ç¥¨
+            System.out.println(name+"å–æ‰äº†1å¼ ç¥¨ï¼Œå‰©ä½™ç¥¨æ•°ä¸º:"+ticketsCont);
         }
         
     }
@@ -23,12 +23,12 @@ public class TicketsThread
 {
     public static void main(String args[]){
         
-        //´´½¨Èı¸öÏß³Ì£¬Ä£ÄâÈı¸ö´°¿ÚÂôÆ±
-        MyThread mt1=new MyThread("´°¿Ú1");
-        MyThread mt2=new MyThread("´°¿Ú2");
-        MyThread mt3=new MyThread("´°¿Ú3");
+        //åˆ›å»ºä¸‰ä¸ªçº¿ç¨‹ï¼Œæ¨¡æ‹Ÿä¸‰ä¸ªçª—å£å–ç¥¨
+        MyThread mt1=new MyThread("çª—å£1");
+        MyThread mt2=new MyThread("çª—å£2");
+        MyThread mt3=new MyThread("çª—å£3");
 
-        //Æô¶¯Èı¸öÏß³Ì£¬Ò²¼´ÊÇ´°¿Ú£¬¿ªÊ¼ÂôÆ±
+        //å¯åŠ¨ä¸‰ä¸ªçº¿ç¨‹ï¼Œä¹Ÿå³æ˜¯çª—å£ï¼Œå¼€å§‹å–ç¥¨
 //        mt1.start();
 //        mt2.start();
 //        mt3.start();

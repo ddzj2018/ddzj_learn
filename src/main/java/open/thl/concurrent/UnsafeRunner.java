@@ -17,7 +17,7 @@ public class UnsafeRunner {
 		TomUnsafeRunner tomRunner = new TomUnsafeRunner(false, countDownLatch,"runner");
 		ExecutorService executorService = Executors.newCachedThreadPool();
 		for (int i = 1; i <= size; i++) {
-			executorService.execute(new Thread2RunUnsafe(countDownLatch,tomRunner, i + "_ºÅ"));
+			executorService.execute(new Thread2RunUnsafe(countDownLatch,tomRunner, i + "_å·"));
 		}
 		countDownLatch.await();
 		executorService.shutdown();
@@ -36,7 +36,7 @@ public class UnsafeRunner {
 		public void run() {
 			System.out.println(this.name + ":running...");
 			this.tomRunner.doWork();
-			System.out.println(this.name + ":½áÊø...");
+			System.out.println(this.name + ":ç»“æŸ...");
 			this.countDownLatch.countDown();
 		}
 	}
@@ -56,34 +56,34 @@ public class UnsafeRunner {
 		}
 		public void doWork() {
 
-			// //////////////////Ò»°ãÐ´·¨///////////////
+			// //////////////////ä¸€èˆ¬å†™æ³•///////////////
 //			 if (unsafe_var == 23) {
-//			 System.out.println("ÎÒÅÐ¶Ï³öÀ´ÁË£¬unsafe_var ==23£¬ÎÒÉèÖÃÎª46..");
+//			 System.out.println("æˆ‘åˆ¤æ–­å‡ºæ¥äº†ï¼Œunsafe_var ==23ï¼Œæˆ‘è®¾ç½®ä¸º46..");
 //			 try {
-//			 //Ä£ÄâÒµÎñ´úÂë
+//			 //æ¨¡æ‹Ÿä¸šåŠ¡ä»£ç 
 //			 Thread.sleep(1000);
 //			 } catch (InterruptedException e) {
 //			 e.printStackTrace();
 //			 }
 //			 unsafe_var = 46;
 //			 }
-			// ///////////////ÓÃJAVA CAS¼¼Êõ
+			// ///////////////ç”¨JAVA CASæŠ€æœ¯
 			Unsafe unsafe = UnsafeSupport.getInstance();
 			Class clazz = TomUnsafeRunner.class;
 			Field[] fields = clazz.getDeclaredFields();
-			// »ñÈ¡ÊôÐÔÆ«ÒÆÁ¿£¬¿ÉÒÔÍ¨¹ýÕâ¸öÆ«ÒÆÁ¿¸øÊôÐÔÉèÖÃ
+			// èŽ·å–å±žæ€§åç§»é‡ï¼Œå¯ä»¥é€šè¿‡è¿™ä¸ªåç§»é‡ç»™å±žæ€§è®¾ç½®
 			for (Field f : fields) {
 				System.out.println(f.getName() + ":"+ unsafe.objectFieldOffset(f));
 			}
-			// arg0, arg1, arg2, arg3 ·Ö±ðÊÇÄ¿±ê¶ÔÏóÊµÀý£¬Ä¿±ê¶ÔÏóÊôÐÔÆ«ÒÆÁ¿£¬µ±Ç°Ô¤ÆÚÖµ£¬ÒªÉèµÄÖµ
+			// arg0, arg1, arg2, arg3 åˆ†åˆ«æ˜¯ç›®æ ‡å¯¹è±¡å®žä¾‹ï¼Œç›®æ ‡å¯¹è±¡å±žæ€§åç§»é‡ï¼Œå½“å‰é¢„æœŸå€¼ï¼Œè¦è®¾çš„å€¼
 			// unsafe.compareAndSwapInt(arg0, arg1, arg2, arg3)
-			// Æ«ÒÆÁ¿±àÒëºóÒ»°ã²»»á±äµÄ,intParamÕâ¸öÊôÐÔµÄÆ«ÒÆÁ¿
+			// åç§»é‡ç¼–è¯‘åŽä¸€èˆ¬ä¸ä¼šå˜çš„,intParamè¿™ä¸ªå±žæ€§çš„åç§»é‡
 			// unsafe_var:8
 			long intParamOffset = 12;
 			if (unsafe.compareAndSwapInt(this, intParamOffset, 23, 46)) {
-				System.out.println("ÎÒÅÐ¶Ï³öÀ´ÁË£¬unsafe_var == 23£¬ÎÒÉèÖÃÎª46..");
+				System.out.println("æˆ‘åˆ¤æ–­å‡ºæ¥äº†ï¼Œunsafe_var == 23ï¼Œæˆ‘è®¾ç½®ä¸º46..");
 				try {
-					// //Ä£ÄâÒµÎñ´úÂë
+					// //æ¨¡æ‹Ÿä¸šåŠ¡ä»£ç 
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
@@ -99,10 +99,10 @@ public class UnsafeRunner {
 		static {
 			Field field;
 			try {
-				// ÓÉ·´±àÒëUnsafeÀà»ñµÃµÄÐÅÏ¢
+				// ç”±åç¼–è¯‘Unsafeç±»èŽ·å¾—çš„ä¿¡æ¯
 				field = Unsafe.class.getDeclaredField("theUnsafe");
 				field.setAccessible(true);
-				// »ñÈ¡¾²Ì¬ÊôÐÔ,UnsafeÔÚÆô¶¯JVMÊ±Ëært.jar×°ÔØ
+				// èŽ·å–é™æ€å±žæ€§,Unsafeåœ¨å¯åŠ¨JVMæ—¶éšrt.jarè£…è½½
 				unsafe = (Unsafe) field.get(null);
 			} catch (Exception e) {
 				System.out.println(e);
@@ -110,7 +110,7 @@ public class UnsafeRunner {
 			}
 		}
 		/**
-		 * »ñÈ¡{@link Unsafe }
+		 * èŽ·å–{@link Unsafe }
 		 */
 		public static Unsafe getInstance() {
 			return unsafe;

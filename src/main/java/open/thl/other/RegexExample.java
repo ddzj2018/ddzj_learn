@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 /**
- * ÕıÔò±í´ïÊ½ÑéÖ¤ÑùÀı
+ * æ­£åˆ™è¡¨è¾¾å¼éªŒè¯æ ·ä¾‹
  * @author zhouchangwei
  *
  */
@@ -14,16 +14,16 @@ public class RegexExample {
 	}
 
 	/**
-	 * ÅĞ¶Ï×Ö·û´®ÊÇ·ñÖ»°üº¬Êı×Ö1-9×ÖÄ¸a-zA-ZÏÂ»®Ïß_ºÍºá¸Ü-
+	 * åˆ¤æ–­å­—ç¬¦ä¸²æ˜¯å¦åªåŒ…å«æ•°å­—1-9å­—æ¯a-zA-Zä¸‹åˆ’çº¿_å’Œæ¨ªæ -
 	 * @param inputStr
 	 * @return
 	 */
 	private static boolean judgeRegex(String inputStr) {
 		try {
 			String regex = "^[a-zA-Z0-9_-]+$";
-			// ´´½¨ Pattern ¶ÔÏó
+			// åˆ›å»º Pattern å¯¹è±¡
 			Pattern p = Pattern.compile(regex);
-			// ÏÖÔÚ´´½¨ matcher ¶ÔÏó
+			// ç°åœ¨åˆ›å»º matcher å¯¹è±¡
 			Matcher m = p.matcher(inputStr);
 			return m.matches();
 		} catch (PatternSyntaxException e) {

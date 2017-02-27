@@ -19,16 +19,16 @@ import com.google.common.collect.Lists;
 
 
 /**
- * Apache POIÊÇÒ»¸öÃâ·ÑµÄ¿ªÔ´¿âÓÃÓÚ´¦ÀíMicrosoft OfficeÎÄµµ¡£ÓÃËü¿ÉÒÔÊ¹ÓÃJava¶ÁÈ¡ºÍ´´½¨,ĞŞ¸ÄMS ExcelÎÄ¼ş£¬MS
- * WordºÍMSPowerPointÎÄ¼ş¡£
- * HSSF £­ Ìá¹©¶ÁĞ´Microsoft Excel XLS¸ñÊ½µµ°¸µÄ¹¦ÄÜ¡£
- * XSSF £­ Ìá¹©¶ÁĞ´Microsoft Excel OOXML XLSX¸ñÊ½µµ°¸µÄ¹¦ÄÜ¡£
- * HWPF £­ Ìá¹©¶ÁĞ´Microsoft Word DOC97¸ñÊ½µµ°¸µÄ¹¦ÄÜ¡£
- * XWPF £­ Ìá¹©¶ÁĞ´Microsoft Word DOC2003¸ñÊ½µµ°¸µÄ¹¦ÄÜ¡£
- * HSLF £­ Ìá¹©¶ÁĞ´Microsoft PowerPoint¸ñÊ½µµ°¸µÄ¹¦ÄÜ¡£
- * HDGF £­ Ìá¹©¶ÁMicrosoft Visio¸ñÊ½µµ°¸µÄ¹¦ÄÜ¡£
- * HPBF £­ Ìá¹©¶ÁMicrosoft Publisher¸ñÊ½µµ°¸µÄ¹¦ÄÜ¡£
- * HSMF £­ Ìá¹©¶ÁMicrosoft Outlook¸ñÊ½µµ°¸µÄ¹¦ÄÜ¡£
+ * Apache POIæ˜¯ä¸€ä¸ªå…è´¹çš„å¼€æºåº“ç”¨äºå¤„ç†Microsoft Officeæ–‡æ¡£ã€‚ç”¨å®ƒå¯ä»¥ä½¿ç”¨Javaè¯»å–å’Œåˆ›å»º,ä¿®æ”¹MS Excelæ–‡ä»¶ï¼ŒMS
+ * Wordå’ŒMSPowerPointæ–‡ä»¶ã€‚
+ * HSSF ï¼ æä¾›è¯»å†™Microsoft Excel XLSæ ¼å¼æ¡£æ¡ˆçš„åŠŸèƒ½ã€‚
+ * XSSF ï¼ æä¾›è¯»å†™Microsoft Excel OOXML XLSXæ ¼å¼æ¡£æ¡ˆçš„åŠŸèƒ½ã€‚
+ * HWPF ï¼ æä¾›è¯»å†™Microsoft Word DOC97æ ¼å¼æ¡£æ¡ˆçš„åŠŸèƒ½ã€‚
+ * XWPF ï¼ æä¾›è¯»å†™Microsoft Word DOC2003æ ¼å¼æ¡£æ¡ˆçš„åŠŸèƒ½ã€‚
+ * HSLF ï¼ æä¾›è¯»å†™Microsoft PowerPointæ ¼å¼æ¡£æ¡ˆçš„åŠŸèƒ½ã€‚
+ * HDGF ï¼ æä¾›è¯»Microsoft Visioæ ¼å¼æ¡£æ¡ˆçš„åŠŸèƒ½ã€‚
+ * HPBF ï¼ æä¾›è¯»Microsoft Publisheræ ¼å¼æ¡£æ¡ˆçš„åŠŸèƒ½ã€‚
+ * HSMF ï¼ æä¾›è¯»Microsoft Outlookæ ¼å¼æ¡£æ¡ˆçš„åŠŸèƒ½ã€‚
  * @author zhouchangwei
  *
  */
@@ -46,7 +46,7 @@ public class PoiExample {
 			XWPFParagraph graph1 = doc.createParagraph();
 			XWPFRun run = graph1.createRun();
 			run.setBold(true);
-			run.setText("ÄÚÈİ£ºxx");
+			run.setText("å†…å®¹ï¼šxx");
 			FileOutputStream out = new FileOutputStream("D:/word.doc");
 			doc.write(out);
 			doc.close();
@@ -60,22 +60,22 @@ public class PoiExample {
 	
 	public static void excelEx(){
 		try {
-			Workbook wb = new XSSFWorkbook();//Ö»ÄÜµ¼³öxlsx¸ñÊ½
-			ImmutableList<String> headerlist=ImmutableList.of("ĞòºÅ","·´À¡ÄÚÈİ","Ê±¼ä","ÓÃ»§");
+			Workbook wb = new XSSFWorkbook();//åªèƒ½å¯¼å‡ºxlsxæ ¼å¼
+			ImmutableList<String> headerlist=ImmutableList.of("åºå·","åé¦ˆå†…å®¹","æ—¶é—´","ç”¨æˆ·");
 			
-			// ´´½¨µÚÒ»¸ösheet£¨Ò³£©
-			Sheet sheet = wb.createSheet("·´À¡ÁĞ±í");
-			//¶¨ÒåÃ¿ÁĞ¿í¶È
+			// åˆ›å»ºç¬¬ä¸€ä¸ªsheetï¼ˆé¡µï¼‰
+			Sheet sheet = wb.createSheet("åé¦ˆåˆ—è¡¨");
+			//å®šä¹‰æ¯åˆ—å®½åº¦
 //			sheet.setColumnWidth(0, 8 * 256);
 //			sheet.setColumnWidth(1, 40 * 256);
 //			sheet.setColumnWidth(2, 20 * 256);
 //			sheet.setColumnWidth(3, 20 * 256);
-			//Ê×ĞĞtitle
+			//é¦–è¡Œtitle
 			Row row = sheet.createRow((short) 0);
 			for (int i=0;i<headerlist.size();i++) {
 				row.createCell(i).setCellValue(headerlist.get(i));
 			}
-			//µÚ¶şĞĞ
+			//ç¬¬äºŒè¡Œ
 			Row rowbody = sheet.createRow((short) 1);
 			rowbody.createCell(0).setCellValue(1);
 			rowbody.createCell(1).setCellValue("contentxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");

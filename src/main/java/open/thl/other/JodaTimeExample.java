@@ -13,8 +13,8 @@ import org.joda.time.format.DateTimeFormatter;
 import com.google.common.collect.Lists;
 
 /**
- * Java SE 8Ö®Ç°µÄJAVA°æ±¾ÖĞ¶ÔÈÕÆÚµÄÖ§³ÖÊÇ±È½Ï²îµÄ£¬Joda-Time±»¾­³£±»Ê¹ÓÃÀ´Ìæ»»Ô­ÓĞµÄÈÕÆÚÏµÍ³£¬ËüÄÜ¹»Ö§³Ö¸ü¶àµÄÈÕÀúÌåÏµ£¬
- * ²¢Ìá¹©ÁËºÜ¶à·Ç³£·½±ãµÄÈÕÆÚ´¦Àí·½·¨£¬¶øÇÒËüµÄĞÔÄÜÒ²ÊÇ·Ç³£³öÉ«µÄ¡£
+ * Java SE 8ä¹‹å‰çš„JAVAç‰ˆæœ¬ä¸­å¯¹æ—¥æœŸçš„æ”¯æŒæ˜¯æ¯”è¾ƒå·®çš„ï¼ŒJoda-Timeè¢«ç»å¸¸è¢«ä½¿ç”¨æ¥æ›¿æ¢åŸæœ‰çš„æ—¥æœŸç³»ç»Ÿï¼Œå®ƒèƒ½å¤Ÿæ”¯æŒæ›´å¤šçš„æ—¥å†ä½“ç³»ï¼Œ
+ * å¹¶æä¾›äº†å¾ˆå¤šéå¸¸æ–¹ä¾¿çš„æ—¥æœŸå¤„ç†æ–¹æ³•ï¼Œè€Œä¸”å®ƒçš„æ€§èƒ½ä¹Ÿæ˜¯éå¸¸å‡ºè‰²çš„ã€‚
  * 
  * @author zhouchangwei
  *
@@ -25,10 +25,10 @@ public class JodaTimeExample {
 //		System.out.println(dTime.minusDays(1).toString("yyyy-MM-dd"));
 		
 		DateTimeFormatter format = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm:ss");  
-        //Ê±¼ä½âÎö    
+        //æ—¶é—´è§£æ    
         DateTime dateTime2 = DateTime.parse("2012-12-21 23:22:45", format);   
         
-     // DateTimeÓëjava.util.Date¶ÔÏó,µ±Ç°ÏµÍ³TimeMillis×ª»»    
+     // DateTimeä¸java.util.Dateå¯¹è±¡,å½“å‰ç³»ç»ŸTimeMillisè½¬æ¢    
         DateTime dt6 = new DateTime(new Date());  
         System.out.println("dt6"+dt6);
         Date date = dt6.toDate();   

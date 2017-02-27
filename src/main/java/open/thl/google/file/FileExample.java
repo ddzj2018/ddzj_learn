@@ -25,7 +25,7 @@ public class FileExample {
 			e.printStackTrace();
 		}
 		
-		//´óÎÄ¼ş´¦Àí
+		//å¤§æ–‡ä»¶å¤„ç†
 		LineIterator it = null;
 		try {
 			it = FileUtils.lineIterator(new File(path), "UTF-8");

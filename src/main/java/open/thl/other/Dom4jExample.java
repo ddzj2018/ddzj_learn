@@ -1,7 +1,7 @@
 package open.thl.other;
 
 /**
- * DOM4JÊÇÒ»¸ö´¦ÀíXMLµÄ¿ªÔ´¿ò¼Ü£¬ËüÕûºÏÁË¶ÔÓÚXPath£¬²¢ÇÒÍêÈ«Ö§³ÖDOM£¬SAX£¬JAXPµÈ¼¼Êõ¡£
+ * DOM4Jæ˜¯ä¸€ä¸ªå¤„ç†XMLçš„å¼€æºæ¡†æž¶ï¼Œå®ƒæ•´åˆäº†å¯¹äºŽXPathï¼Œå¹¶ä¸”å®Œå…¨æ”¯æŒDOMï¼ŒSAXï¼ŒJAXPç­‰æŠ€æœ¯ã€‚
  * 
  * @author zhouchangwei
  *

@@ -20,7 +20,7 @@ import org.apache.http.util.EntityUtils;
 public class HttpClientExample {
 	final static private String charset = "UTF-8";
 	/**
-	 * get ÇëÇó
+	 * get è¯·æ±‚
 	 * @param url
 	 * @return
 	 */
@@ -44,7 +44,7 @@ public class HttpClientExample {
 		return result;
 	}
 	/**
-	 * post ÇëÇó
+	 * post è¯·æ±‚
 	 * @param url
 	 * @param jsonParam "{\"qmIds\":[12,12,12]}"
 	 * @param formMap

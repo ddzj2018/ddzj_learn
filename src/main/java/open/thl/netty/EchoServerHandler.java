@@ -6,21 +6,21 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelHandler.Sharable;
 /**
- * Sharable±íÊ¾´Ë¶ÔÏóÔÚchannel¼ä¹²Ïí
- * handlerÀàÊÇÎÒÃÇµÄÏêÏ¸ÒµÎñÀà
+ * Sharableè¡¨ç¤ºæ­¤å¯¹è±¡åœ¨channelé—´å…±äº«
+ * handlerç±»æ˜¯æˆ‘ä»¬çš„è¯¦ç»†ä¸šåŠ¡ç±»
  * */
-@Sharable//×¢½â@SharableÄÜ¹»ÈÃËüÔÚchannels¼ä¹²Ïí
+@Sharable//æ³¨è§£@Sharableèƒ½å¤Ÿè®©å®ƒåœ¨channelsé—´å…±äº«
 public class EchoServerHandler extends ChannelInboundHandlerAdapter{
 	public void channelRead(ChannelHandlerContext ctx, Object msg) { 
 		System.out.println("server received data :" + msg); 
-		ctx.write(msg);//Ğ´»ØÊı¾İ£¬
+		ctx.write(msg);//å†™å›æ•°æ®ï¼Œ
 	} 
 	public void channelReadComplete(ChannelHandlerContext ctx) { 
-		ctx.writeAndFlush(Unpooled.EMPTY_BUFFER) //flushµôÈ«²¿Ğ´»ØµÄÊı¾İ
-		.addListener(ChannelFutureListener.CLOSE); //µ±flushÍê±Ïºó¹Ø±Õchannel
+		ctx.writeAndFlush(Unpooled.EMPTY_BUFFER) //flushæ‰å…¨éƒ¨å†™å›çš„æ•°æ®
+		.addListener(ChannelFutureListener.CLOSE); //å½“flushå®Œæ¯•åå…³é—­channel
 	} 
 	public void exceptionCaught(ChannelHandlerContext ctx,Throwable cause) { 
-		cause.printStackTrace();//²¶×½Òì³£ĞÅÏ¢
-		ctx.close();//³öÏÖÒì³£Ê±¹Ø±Õchannel 
+		cause.printStackTrace();//æ•æ‰å¼‚å¸¸ä¿¡æ¯
+		ctx.close();//å‡ºç°å¼‚å¸¸æ—¶å…³é—­channel 
 	} 	
 }

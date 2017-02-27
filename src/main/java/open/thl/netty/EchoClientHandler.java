@@ -11,19 +11,20 @@ import io.netty.util.CharsetUtil;
 @Sharable
 public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 	/**
-	 *´Ë·½·¨»áÔÚÁ¬½Óµ½serverºó±»µ÷ÓÃ 
+	 *æ­¤æ–¹æ³•ä¼šåœ¨è¿æ¥åˆ°serveråè¢«è°ƒç”¨ 
 	 * */
 	public void channelActive(ChannelHandlerContext ctx) {
+		System.out.println("====contect server:"+ctx);
 		ctx.write(Unpooled.copiedBuffer("Netty rocks!", CharsetUtil.UTF_8));
 	}
 	/**
-	 *´Ë·½·¨»áÔÚ½ÓÊÕµ½serverÊı¾İºóµ÷ÓÃ 
+	 *æ­¤æ–¹æ³•ä¼šåœ¨æ¥æ”¶åˆ°serveræ•°æ®åè°ƒç”¨ 
 	 * */
 	public void channelRead0(ChannelHandlerContext ctx, ByteBuf in) {
 		System.out.println("Client received: " + ByteBufUtil.hexDump(in.readBytes(in.readableBytes())));
 	}
 	/**
-	 *²¶×½µ½Òì³£ 
+	 *æ•æ‰åˆ°å¼‚å¸¸ 
 	 * */
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
 		cause.printStackTrace();

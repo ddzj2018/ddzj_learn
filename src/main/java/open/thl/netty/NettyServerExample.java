@@ -14,9 +14,9 @@ import java.net.InetSocketAddress;
 
 
 /**
- * NettyÊÇÓÉJBOSSÌá¹©µÄÒ»¸öjava¿ªÔ´¿ò¼Ü¡£NettyÌá¹©Òì²½µÄ¡¢ÊÂ¼şÇı¶¯µÄÍøÂçÓ¦ÓÃ³ÌĞò¿ò¼ÜºÍ¹¤¾ß£¬ÓÃÒÔ¿ìËÙ¿ª·¢¸ßĞÔÄÜ¡¢
- * ¸ß¿É¿¿ĞÔµÄÍøÂç·şÎñÆ÷ºÍ¿Í»§¶Ë³ÌĞò¡£Ò²¾ÍÊÇËµ£¬Netty ÊÇÒ»¸ö»ùÓÚNIOµÄ¿Í»§£¬·şÎñÆ÷¶Ë±à³Ì¿ò¼Ü£¬Ê¹ÓÃNetty
- * ¿ÉÒÔÈ·±£Äã¿ìËÙºÍ¼òµ¥µÄ¿ª·¢³öÒ»¸öÍøÂçÓ¦ÓÃ£¬ÀıÈçÊµÏÖÁËÄ³ÖÖĞ­ÒéµÄ¿Í»§£¬·şÎñ¶ËÓ¦ÓÃ¡£
+ * Nettyæ˜¯ç”±JBOSSæä¾›çš„ä¸€ä¸ªjavaå¼€æºæ¡†æ¶ã€‚Nettyæä¾›å¼‚æ­¥çš„ã€äº‹ä»¶é©±åŠ¨çš„ç½‘ç»œåº”ç”¨ç¨‹åºæ¡†æ¶å’Œå·¥å…·ï¼Œç”¨ä»¥å¿«é€Ÿå¼€å‘é«˜æ€§èƒ½ã€
+ * é«˜å¯é æ€§çš„ç½‘ç»œæœåŠ¡å™¨å’Œå®¢æˆ·ç«¯ç¨‹åºã€‚ä¹Ÿå°±æ˜¯è¯´ï¼ŒNetty æ˜¯ä¸€ä¸ªåŸºäºNIOçš„å®¢æˆ·ï¼ŒæœåŠ¡å™¨ç«¯ç¼–ç¨‹æ¡†æ¶ï¼Œä½¿ç”¨Netty
+ * å¯ä»¥ç¡®ä¿ä½ å¿«é€Ÿå’Œç®€å•çš„å¼€å‘å‡ºä¸€ä¸ªç½‘ç»œåº”ç”¨ï¼Œä¾‹å¦‚å®ç°äº†æŸç§åè®®çš„å®¢æˆ·ï¼ŒæœåŠ¡ç«¯åº”ç”¨ã€‚
  * 
  * @author zhouchangwei
  *
@@ -24,25 +24,25 @@ import java.net.InetSocketAddress;
 public class NettyServerExample {
 	 private static final int port = 8080;
 		public void start() throws InterruptedException {
-			ServerBootstrap b = new ServerBootstrap();// Òıµ¼¸¨Öú³ÌĞò
-			EventLoopGroup group = new NioEventLoopGroup();// Í¨¹ınio·½Ê½À´½ÓÊÕÁ¬½ÓºÍ´¦ÀíÁ¬½Ó
+			ServerBootstrap b = new ServerBootstrap();// å¼•å¯¼è¾…åŠ©ç¨‹åº
+			EventLoopGroup group = new NioEventLoopGroup();// é€šè¿‡nioæ–¹å¼æ¥æ¥æ”¶è¿æ¥å’Œå¤„ç†è¿æ¥
 			try {
 				b.group(group);
-				b.channel(NioServerSocketChannel.class);// ÉèÖÃnioÀàĞÍµÄchannel
-				b.localAddress(new InetSocketAddress(port));// ÉèÖÃ¼àÌı¶Ë¿Ú
-				b.childHandler(new ChannelInitializer<SocketChannel>() {//ÓĞÁ¬½Óµ½´ïÊ±»á´´½¨Ò»¸öchannel
+				b.channel(NioServerSocketChannel.class);// è®¾ç½®nioç±»å‹çš„channel
+				b.localAddress(new InetSocketAddress(port));// è®¾ç½®ç›‘å¬ç«¯å£
+				b.childHandler(new ChannelInitializer<SocketChannel>() {//æœ‰è¿æ¥åˆ°è¾¾æ—¶ä¼šåˆ›å»ºä¸€ä¸ªchannel
 							protected void initChannel(SocketChannel ch) throws Exception {
-								// pipeline¹ÜÀíchannelÖĞµÄHandler£¬ÔÚchannel¶ÓÁĞÖĞ¼ÓÈëÒ»¸öhandlerÀ´´¦ÀíÒµÎñ
+								// pipelineç®¡ç†channelä¸­çš„Handlerï¼Œåœ¨channelé˜Ÿåˆ—ä¸­åŠ å…¥ä¸€ä¸ªhandleræ¥å¤„ç†ä¸šåŠ¡
 								ch.pipeline().addLast("myHandler", new EchoServerHandler());
 							}
 						});
-				ChannelFuture f = b.bind().sync();// ÅäÖÃÍê±Ï£¬é_Ê¼°ó¶¨server£¬Í¨¹ıµ÷ÓÃsyncÍ¬²½·½·¨¶ÂÈûÖ±µ½°ó¶¨³É¹¦
+				ChannelFuture f = b.bind().sync();// é…ç½®å®Œæ¯•ï¼Œé–‹å§‹ç»‘å®šserverï¼Œé€šè¿‡è°ƒç”¨syncåŒæ­¥æ–¹æ³•å µå¡ç›´åˆ°ç»‘å®šæˆåŠŸ
 				System.out.println(NettyServerExample.class.getName() + " started and listen on " + f.channel().localAddress());
-				f.channel().closeFuture().sync();// Ó¦ÓÃ³ÌĞò»áÒ»Ö±µÈ´ı£¬Ö±µ½channel¹Ø±Õ
+				f.channel().closeFuture().sync();// åº”ç”¨ç¨‹åºä¼šä¸€ç›´ç­‰å¾…ï¼Œç›´åˆ°channelå…³é—­
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
-				group.shutdownGracefully().sync();//¹Ø±ÕEventLoopGroup£¬ÊÍ·ÅµôÈ«²¿×ÊÔ´°üº¬´´½¨µÄÏß³Ì
+				group.shutdownGracefully().sync();//å…³é—­EventLoopGroupï¼Œé‡Šæ”¾æ‰å…¨éƒ¨èµ„æºåŒ…å«åˆ›å»ºçš„çº¿ç¨‹
 			}
 		}
 		public static void main(String[] args) {

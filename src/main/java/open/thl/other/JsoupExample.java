@@ -5,7 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 /**
- * jSOUPÌá¹©ÁËÒ»Ì×ÓëÍâ²¿»¥ÁªÍøµÄÍøÒ³£¨HTML£©½øÐÐ½»»¥µÄAPI£¬ÄÜ¹»ÈÃÊ¹ÓÃÕß·Ç³£·½±ãµØ ÀûÓÃCSSÑ¡ÔñÆ÷À´½âÎöHTMLÒ³Ãæ£¬´Ó¶ø»ñÈ¡ÐèÒªµÄÄÚÈÝ¡£
+ * jSOUPæä¾›äº†ä¸€å¥—ä¸Žå¤–éƒ¨äº’è”ç½‘çš„ç½‘é¡µï¼ˆHTMLï¼‰è¿›è¡Œäº¤äº’çš„APIï¼Œèƒ½å¤Ÿè®©ä½¿ç”¨è€…éžå¸¸æ–¹ä¾¿åœ° åˆ©ç”¨CSSé€‰æ‹©å™¨æ¥è§£æžHTMLé¡µé¢ï¼Œä»Žè€ŒèŽ·å–éœ€è¦çš„å†…å®¹ã€‚
  * 
  * @author zhouchangwei
  *

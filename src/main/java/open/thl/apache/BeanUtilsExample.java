@@ -1,6 +1,6 @@
 package open.thl.apache;
 /**
- * Commons-BeanUtils Ìá¹©¶Ô Java ·´ÉäºÍ×ÔÊ¡APIµÄ°ü×°
+ * Commons-BeanUtils æä¾›å¯¹ Java åå°„å’Œè‡ªçœAPIçš„åŒ…è£…
  * @author zhouchangwei
  *
  */

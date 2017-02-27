@@ -15,7 +15,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
 /**
- * apache ¼ÓÃÜ½âÃÜ×ªÂë²Ù×÷Ê¾Àı
+ * apache åŠ å¯†è§£å¯†è½¬ç æ“ä½œç¤ºä¾‹
  * 
  * @author zhouchangwei
  *
@@ -23,16 +23,16 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 public class CodecExample {
 	private static String UTF8="UTF-8";
 	/** 
-     * ÃÜÔ¿Ëã·¨ 
-     * javaÖ§³Ö56Î»ÃÜÔ¿£¬bouncycastleÖ§³Ö64Î» 
+     * å¯†é’¥ç®—æ³• 
+     * javaæ”¯æŒ56ä½å¯†é’¥ï¼Œbouncycastleæ”¯æŒ64ä½ 
      * */  
     public static final String KEY_ALGORITHM="DES";  
     /** 
-     * ¼ÓÃÜ/½âÃÜËã·¨/¹¤×÷Ä£Ê½/Ìî³ä·½Ê½ 
+     * åŠ å¯†/è§£å¯†ç®—æ³•/å·¥ä½œæ¨¡å¼/å¡«å……æ–¹å¼ 
      * */  
     public static final String CIPHER_ALGORITHM="DES/ECB/PKCS5Padding";  
 	/**
-	 * base64×ªÂë
+	 * base64è½¬ç 
 	 * @param data
 	 * @return
 	 * @throws UnsupportedEncodingException
@@ -42,7 +42,7 @@ public class CodecExample {
 		return new String(encodeByte,UTF8);
 	}
 	/**
-	 * base64½âÂë
+	 * base64è§£ç 
 	 * @param data
 	 * @return
 	 * @throws UnsupportedEncodingException
@@ -52,7 +52,7 @@ public class CodecExample {
 		return new String(decodeByte,UTF8);
 	}
 	/**
-	 * md5¼ÓÃÜ
+	 * md5åŠ å¯†
 	 * @param data
 	 * @return
 	 */
@@ -60,7 +60,7 @@ public class CodecExample {
 		return DigestUtils.md5Hex(data);
 	}
 	/**
-	 * sha1¼ÓÃÜ
+	 * sha1åŠ å¯†
 	 * @param data
 	 * @return
 	 */
@@ -68,7 +68,7 @@ public class CodecExample {
 		return DigestUtils.sha1Hex(data);
 	}
 	/**
-	 * sha256¼ÓÃÜ
+	 * sha256åŠ å¯†
 	 * @param data
 	 * @return
 	 */
@@ -80,64 +80,64 @@ public class CodecExample {
       
     /** 
      *  
-     * Éú³ÉÃÜÔ¿£¬java6Ö»Ö§³Ö56Î»ÃÜÔ¿£¬bouncycastleÖ§³Ö64Î»ÃÜÔ¿ 
-     * @return byte[] ¶ş½øÖÆÃÜÔ¿ 
+     * ç”Ÿæˆå¯†é’¥ï¼Œjava6åªæ”¯æŒ56ä½å¯†é’¥ï¼Œbouncycastleæ”¯æŒ64ä½å¯†é’¥ 
+     * @return byte[] äºŒè¿›åˆ¶å¯†é’¥ 
      * */  
     public static byte[] initkey() throws Exception{  
-        //ÊµÀı»¯ÃÜÔ¿Éú³ÉÆ÷  
+        //å®ä¾‹åŒ–å¯†é’¥ç”Ÿæˆå™¨  
         KeyGenerator kg=KeyGenerator.getInstance(KEY_ALGORITHM);  
-        //³õÊ¼»¯ÃÜÔ¿Éú³ÉÆ÷  
+        //åˆå§‹åŒ–å¯†é’¥ç”Ÿæˆå™¨  
         kg.init(56);  
-        //Éú³ÉÃÜÔ¿  
+        //ç”Ÿæˆå¯†é’¥  
         SecretKey secretKey=kg.generateKey();  
-        //»ñÈ¡¶ş½øÖÆÃÜÔ¿±àÂëĞÎÊ½  
+        //è·å–äºŒè¿›åˆ¶å¯†é’¥ç¼–ç å½¢å¼  
         return secretKey.getEncoded();  
     }  
     /** 
-     * ×ª»»ÃÜÔ¿ 
-     * @param key ¶ş½øÖÆÃÜÔ¿ 
-     * @return Key ÃÜÔ¿ 
+     * è½¬æ¢å¯†é’¥ 
+     * @param key äºŒè¿›åˆ¶å¯†é’¥ 
+     * @return Key å¯†é’¥ 
      * */  
     public static Key toKey(byte[] key) throws Exception{  
-        //ÊµÀı»¯DesÃÜÔ¿  
+        //å®ä¾‹åŒ–Deså¯†é’¥  
         DESKeySpec dks=new DESKeySpec(key);  
-        //ÊµÀı»¯ÃÜÔ¿¹¤³§  
+        //å®ä¾‹åŒ–å¯†é’¥å·¥å‚  
         SecretKeyFactory keyFactory=SecretKeyFactory.getInstance(KEY_ALGORITHM);  
-        //Éú³ÉÃÜÔ¿  
+        //ç”Ÿæˆå¯†é’¥  
         SecretKey secretKey=keyFactory.generateSecret(dks);  
         return secretKey;  
     }  
       
     /** 
-     * ¼ÓÃÜÊı¾İ 
-     * @param data ´ı¼ÓÃÜÊı¾İ 
-     * @param key ÃÜÔ¿ 
-     * @return byte[] ¼ÓÃÜºóµÄÊı¾İ 
+     * åŠ å¯†æ•°æ® 
+     * @param data å¾…åŠ å¯†æ•°æ® 
+     * @param key å¯†é’¥ 
+     * @return byte[] åŠ å¯†åçš„æ•°æ® 
      * */  
     public static byte[] encryptDes(byte[] data,byte[] key) throws Exception{  
-        //»¹Ô­ÃÜÔ¿  
+        //è¿˜åŸå¯†é’¥  
         Key k=toKey(key);  
-        //ÊµÀı»¯  
+        //å®ä¾‹åŒ–  
         Cipher cipher=Cipher.getInstance(CIPHER_ALGORITHM);  
-        //³õÊ¼»¯£¬ÉèÖÃÎª¼ÓÃÜÄ£Ê½  
+        //åˆå§‹åŒ–ï¼Œè®¾ç½®ä¸ºåŠ å¯†æ¨¡å¼  
         cipher.init(Cipher.ENCRYPT_MODE, k);  
-        //Ö´ĞĞ²Ù×÷  
+        //æ‰§è¡Œæ“ä½œ  
         return cipher.doFinal(data);  
     }  
     /** 
-     * ½âÃÜÊı¾İ 
-     * @param data ´ı½âÃÜÊı¾İ 
-     * @param key ÃÜÔ¿ 
-     * @return byte[] ½âÃÜºóµÄÊı¾İ 
+     * è§£å¯†æ•°æ® 
+     * @param data å¾…è§£å¯†æ•°æ® 
+     * @param key å¯†é’¥ 
+     * @return byte[] è§£å¯†åçš„æ•°æ® 
      * */  
     public static byte[] decryptDes(byte[] data,byte[] key) throws Exception{  
-        //»¶Ó­ÃÜÔ¿  
+        //æ¬¢è¿å¯†é’¥  
         Key k =toKey(key);  
-        //ÊµÀı»¯  
+        //å®ä¾‹åŒ–  
         Cipher cipher=Cipher.getInstance(CIPHER_ALGORITHM);  
-        //³õÊ¼»¯£¬ÉèÖÃÎª½âÃÜÄ£Ê½  
+        //åˆå§‹åŒ–ï¼Œè®¾ç½®ä¸ºè§£å¯†æ¨¡å¼  
         cipher.init(Cipher.DECRYPT_MODE, k);  
-        //Ö´ĞĞ²Ù×÷  
+        //æ‰§è¡Œæ“ä½œ  
         return cipher.doFinal(data);  
     } 
     
@@ -152,29 +152,29 @@ public class CodecExample {
 			byte[] keyBytes=initkey();
 			System.out.println(keyBytes);
 			System.out.println(new String(keyBytes,UTF8));
-			String content="Ê·µÙ·òÊ·µÙ·ò,xx";  
-	        System.out.println("¼ÓÃÜÄÚÈİ£º"+content);  
-	        //des ÃÜÔ¿ÖÁÉÙ8Î»  
+			String content="å²è’‚å¤«å²è’‚å¤«,xx";  
+	        System.out.println("åŠ å¯†å†…å®¹ï¼š"+content);  
+	        //des å¯†é’¥è‡³å°‘8ä½  
 	        String keyString="fefba2aec68f8a0be3eec851405f5a02";
-	        //ÃÜÔ¿×ª×Ö½ÚÊı×é
+	        //å¯†é’¥è½¬å­—èŠ‚æ•°ç»„
 	        byte[] key=keyString.getBytes();
-	        System.out.println("ÃÜÔ¿£º"+key);  
-	        //¼ÓÃÜ===============================================
-	        //ÏÈ¼ÓÃÜ
+	        System.out.println("å¯†é’¥ï¼š"+key);  
+	        //åŠ å¯†===============================================
+	        //å…ˆåŠ å¯†
 	        byte[] data=encryptDes(content.getBytes(), key);
-	        System.out.println("¼ÓÃÜºódata£º"+data);  
-	        //ÔÙbase64×ªÂë
+	        System.out.println("åŠ å¯†ådataï¼š"+data);  
+	        //å†base64è½¬ç 
 	        String dataStr=Base64.encodeBase64String(data);
-	        System.out.println("´«Êäbase64×ªÂëÖ®ºóÊı¾İ£º"+dataStr);  
+	        System.out.println("ä¼ è¾“base64è½¬ç ä¹‹åæ•°æ®ï¼š"+dataStr);  
 	        
-	        //½âÃÜ===============================================
-	        //ÏÈbase64½âÂë  
+	        //è§£å¯†===============================================
+	        //å…ˆbase64è§£ç   
 	        byte[] resultData=Base64.decodeBase64(dataStr);
-	        System.out.println("½âÂëÖ®ºóresultData£º"+resultData);  
-	        //ÔÙ½âÃÜ
+	        System.out.println("è§£ç ä¹‹åresultDataï¼š"+resultData);  
+	        //å†è§£å¯†
 	        byte[] xc=encryptDes(resultData, key);
-	        System.out.println("½âÃÜºóxc£º"+xc);  
-	        System.out.println("½âÃÜºó£º"+new String(xc));  
+	        System.out.println("è§£å¯†åxcï¼š"+xc);  
+	        System.out.println("è§£å¯†åï¼š"+new String(xc));  
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
